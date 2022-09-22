@@ -1,0 +1,16 @@
+#!@RUNSCRIPT@
+
+description="Light Display Manager"
+name="Display Manager"
+
+supervisor=supervise-daemon
+command=/usr/bin/lightdm
+
+depends() {
+	provide display-manager
+	needs localmount
+}
+
+start_pre() {
+	checkpath -d -o lightdm:lightdm -m755 /var/lib/lightdm
+}
