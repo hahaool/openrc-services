@@ -1,4 +1,4 @@
-#!/sbin/openrc-run
+#!@RUNSCRIPT@
 
 name="Display Manager"
 description="SDDM Display Manager"
