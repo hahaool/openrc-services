@@ -9,14 +9,14 @@ depend() {
 
 start() {
     ebegin "Starting ${SVCNAME}"
-    /usr/sbin/crond ${DCRON_OPTS}
+    /usr/bin/crond ${DCRON_OPTS}
     eend $?
 }
 
 stop() {
     ebegin "Stopping ${SVCNAME}"
     start-stop-daemon --stop --quiet \
-        --pidfile /run/crond.pid --exec /usr/sbin/crond
+        --pidfile /run/crond.pid --exec /usr/bin/crond
     local ret=$?
     rm -f /run/crond.pid
     eend ${ret}
