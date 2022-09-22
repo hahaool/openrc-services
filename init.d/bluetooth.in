@@ -1,6 +1,6 @@
 #!@RUNSCRIPT@
 
-command=/usr/sbin/bluetoothd
+command=/usr/bin/bluetoothd
 
 depend() {
     after coldplug
