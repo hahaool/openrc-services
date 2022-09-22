@@ -1,0 +1,16 @@
+#!@RUNSCRIPT@
+
+description="GNOME Display Manager"
+name="Display Manager"
+
+supervisor=supervise-daemon
+command=/usr/bin/gdm
+
+depends() {
+	provide display-manager
+	needs localmount
+}
+
+start_pre() {
+	checkpath -d -o gdm:gdm -m755 /var/lib/gdm
+}
