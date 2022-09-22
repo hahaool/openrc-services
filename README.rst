@@ -1,7 +1,7 @@
-OpenRC Arch Services
+OpenRC Services
 ====================
 
-OpenRC service files for Arch Linux
+OpenRC service files for Linux
 
 Contributing
 ------------
