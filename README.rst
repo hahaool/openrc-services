@@ -14,4 +14,4 @@ When submitting additional service files please:
 + use 4 spaces for indentation
 + make a single commit per service
 
-See ``man runscript`` for details on writing service files.
+See ``man runscript (man openrc-run)`` for details on writing service files.
