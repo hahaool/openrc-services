@@ -1,0 +1,13 @@
+#!@RUNSCRIPT@
+
+description="LXDE Display Manager"
+name="Display Manager"
+
+supervisor=supervise-daemon
+command=/usr/sbin/lxdm
+
+depends() {
+	provide display-manager
+	needs localmount
+	after agetty.tty1
+}
