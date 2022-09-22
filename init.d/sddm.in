@@ -9,6 +9,7 @@ command=/usr/bin/sddm
 depends() {
 	provide display-manager
 	needs localmount
+	after agetty.tty1
 }
 
 start_pre() {
