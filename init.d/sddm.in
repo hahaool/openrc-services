@@ -1,10 +1,10 @@
 #!@RUNSCRIPT@
 
 name="Display Manager"
-description="SDDM Display Manager"
+description="Simple Desktop Display Manager"
 
+supervisor=supervise-daemon
 command=/usr/bin/sddm
-command_args="$sddm_opts"
 
 depends() {
 	provide display-manager
