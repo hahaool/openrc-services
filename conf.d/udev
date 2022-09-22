@@ -16,6 +16,7 @@
 # Timeout in seconds to wait for processing of uevents at boot.
 # There should be no need to change this.
 #udev_settle_timeout="60"
+udev_settle_timeout="30"
 
 # Add extra command line options to udevd, use with care
 # udevd --help for possible values
