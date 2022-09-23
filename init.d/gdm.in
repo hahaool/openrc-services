@@ -1,15 +1,17 @@
 #!@RUNSCRIPT@
 
 description="GNOME Display Manager"
-name="Display Manager"
 
 supervisor=supervise-daemon
 command=/usr/bin/gdm
 
 depends() {
-	provide display-manager
+	provide xdm display-manager
 	needs localmount
-	after agetty.tty1
+	
+	after bootmisc consolefont modules netmount
+        after keymaps
+        want logind
 }
 
 start_pre() {
