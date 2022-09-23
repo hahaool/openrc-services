@@ -4,6 +4,7 @@ description="Remove /run/nologin created by systemd tmpfiles.d"
 
 depend() {
     after tmpfilesd.boot
+    before xdm display-manager
 }
 
 start() {
