@@ -1,5 +1,6 @@
 #!@RUNSCRIPT@
 
+supervisor=supervise-daemon
 command=/usr/bin/bluetoothd
 
 depend() {
