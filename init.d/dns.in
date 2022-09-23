@@ -5,8 +5,9 @@ depend(){
 }
 
 start() {
-    for n in {101.6.6.6,9.9.9,2001:da8::666,223.5.5.5,8.8.8.8}; do
-	    echo "nameserver ${n}" >>/run/systemd/resolve/stub-resolv.conf
+   ebegin "Configure Systemd Dns..."
+   for n in {101.6.6.6,9.9.9.9,223.5.5.5}; do
+       echo "nameserver ${n}" >>/run/systemd/resolve/stub-resolv.conf
     done
   }
 
