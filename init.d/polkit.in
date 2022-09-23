@@ -1,5 +1,7 @@
 #!@RUNSCRIPT@
 
+supervisor=supervise-daemon
+
 name="Polkit System Daemon"
 description="Provide System authentication via PolicyKit1 D-Bus service"
 
