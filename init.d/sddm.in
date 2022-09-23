@@ -1,8 +1,8 @@
 #!@RUNSCRIPT@
 
+supervisor=supervise-daemon
 description="Simple Desktop Display Manager"
 
-supervisor=supervise-daemon
 command=/usr/bin/sddm
 
 depends() {
