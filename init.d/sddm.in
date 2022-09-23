@@ -8,6 +8,11 @@ command=/usr/bin/sddm
 depends() {
 	provide xdm display-manager
 	needs localmount
+	
+        after bootmisc consolefont modules netmount
+        after keymaps
+        before alsasound
+        want logind
 }
 
 start_pre() {
