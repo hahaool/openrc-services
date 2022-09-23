@@ -4,6 +4,7 @@
 
 alsastatedir=/var/lib/alsa
 alsascrdir=/etc/alsa.d
+alsahomedir=/run/alsasound
 
 extra_commands="save restore"
 
@@ -14,6 +15,8 @@ depend() {
 
 restore() {
     ebegin "Restoring Mixer Levels"
+    
+    checkpath -q -d -m 0700 -o root:root ${alsahomedir} || return 1
 
     if [ ! -r "${alsastatedir}/asound.state" ] ; then
         ewarn "No mixer config in ${alsastatedir}/asound.state, you have to unmute your card!"
@@ -47,6 +50,8 @@ restore() {
 
 save() {
     ebegin "Storing ALSA Mixer Levels"
+    
+    checkpath -q -d -m 0700 -o root:root ${alsahomedir} || return 1
 
     mkdir -p "${alsastatedir}"
     if ! alsactl -f "${alsastatedir}/asound.state" store; then
