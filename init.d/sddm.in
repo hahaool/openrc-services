@@ -6,7 +6,7 @@ description="Simple Desktop Display Manager"
 command=/usr/bin/sddm
 
 depends() {
-	provide display-manager
+	provide xdm display-manager
 	needs localmount
 }
 
