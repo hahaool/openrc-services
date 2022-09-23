@@ -1,0 +1,15 @@
+#!@RUNSCRIPT@
+
+depend(){
+   after network
+}
+
+start() {
+    for n in {101.6.6.6,9.9.9,2001:da8::666,223.5.5.5,8.8.8.8}; do
+	    echo "nameserver ${n}" >>/run/systemd/resolve/stub-resolv.conf
+    done
+  }
+
+start_pre() {
+ 	 checkpath -d /run/systemd/resolve/
+}
