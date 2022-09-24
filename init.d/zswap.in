@@ -15,8 +15,9 @@ start_pre() {
    fi
 }
 
-start() {
-	  ebegin "Configuring zram swap device"
+start() 
+{
+	  ebegin "Configuring Zram swap device"
     
     if [ -n "${COMP_ALGORITHM}" ]; then
          echo "${COMP_ALGORITHM}" > /sys/block/zram0/comp_algorithm
@@ -35,7 +36,7 @@ start() {
     fi
 
     echo "$SIZE" > /sys/block/zram0/disksize
-    mkswap /dev/zram0
+    mkswap /dev/zram0 > /dev/null 2>&1
     swapon /dev/zram0 -p 32767
 }
 
@@ -44,7 +45,8 @@ stop() {
    swapoff /dev/zram0
 }
 
-stop_post() {
+stop_post()
+{
     echo '0' > /sys/class/zram-control/hot_remove
     
     if [ -d /sys/module/zswap ]; then
