@@ -1,16 +1,17 @@
 #!@RUNSCRIPT@
 
 depend(){
-   after network
+   after network net
 }
 
 start() {
-   ebegin "Configure Systemd Dns..."
+   ebegin "Configuring Systemd Dns"
    for n in {101.6.6.6,9.9.9.9,223.5.5.5}; do
        echo "nameserver ${n}" >>/run/systemd/resolve/stub-resolv.conf
     done
   }
 
 start_pre() {
- 	 checkpath -d /run/systemd/resolve/
+    ebegin "Checking directory /run/systemd/resolve"
+ 	checkpath -d /run/systemd/resolve -q
 }
