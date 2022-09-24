@@ -17,5 +17,6 @@ start_pre() {
    ebegin "Checking Systemd-resolve Directory"
    checkpath -d /run/systemd/resolve
    
+   eend 0
    return 0
 }
