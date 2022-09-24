@@ -6,5 +6,4 @@ command=/usr/bin/bluetoothd
 depend() {
     after coldplug
     need dbus localmount hostname
-    after xdm
 }
