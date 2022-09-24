@@ -9,9 +9,13 @@ start() {
    for n in {101.6.6.6,9.9.9.9,223.5.5.5}; do
        echo "nameserver ${n}" >>/run/systemd/resolve/stub-resolv.conf
     done
+    
+    eend 0
   }
 
 start_pre() {
    ebegin "Checking Systemd-resolve Directory"
    checkpath -d /run/systemd/resolve
+   
+   return 0
 }
