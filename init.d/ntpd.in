@@ -6,7 +6,7 @@ command_args="$NTPD_OPTS"
 
 depend() {
     use net dns logger
-    after ntp-client
+    after ntp-client dns
 }
 
 start_pre() {
