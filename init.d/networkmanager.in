@@ -9,6 +9,7 @@ description_sleep=""
 
 depend() {
     need dbus
+    provide net
 }
 
 sleep() {
