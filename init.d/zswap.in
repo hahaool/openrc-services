@@ -37,12 +37,16 @@ start() {
     echo "$SIZE" > /sys/block/zram0/disksize
     mkswap /dev/zram0 > /dev/null 2>&1
     swapon /dev/zram0 -p 32767
+    
+    eend 0
 }
 
 stop()
 {
-   ebegin "Deactivating Zram swap devices"
-   swapoff /dev/zram0
+    ebegin "Deactivating Zram swap devices"
+    swapoff /dev/zram0
+    
+    eend 0
 }
 
 stop_post()
