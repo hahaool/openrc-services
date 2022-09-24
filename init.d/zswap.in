@@ -15,9 +15,8 @@ start_pre() {
    fi
 }
 
-start() 
-{
-	  ebegin "Configuring Zram swap device"
+start() {
+   ebegin "Configuring Zram swap device"
     
     if [ -n "${COMP_ALGORITHM}" ]; then
          echo "${COMP_ALGORITHM}" > /sys/block/zram0/comp_algorithm
@@ -40,7 +39,8 @@ start()
     swapon /dev/zram0 -p 32767
 }
 
-stop() {
+stop()
+{
    ebegin "Deactivating Zram swap devices"
    swapoff /dev/zram0
 }
