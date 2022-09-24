@@ -12,6 +12,6 @@ start() {
   }
 
 start_pre() {
-    ebegin "Checking directory /run/systemd/resolve"
- 	checkpath -d /run/systemd/resolve -q
+   ebegin "Checking directory /run/systemd/resolve"
+   checkpath -d /run/systemd/resolve -q
 }
