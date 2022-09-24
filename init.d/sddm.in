@@ -1,7 +1,7 @@
 #!@RUNSCRIPT@
 
 supervisor=supervise-daemon
-description="Simple Desktop Display Manager"
+name="Simple Desktop Display Manager"
 
 command=/usr/bin/sddm
 
