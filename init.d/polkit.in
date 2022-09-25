@@ -1,12 +1,11 @@
 #!@RUNSCRIPT@
+# https://git.alpinelinux.org/aports/tree/community/polkit/polkit.initd
 
 supervisor=supervise-daemon
-
 name="Polkit System Daemon"
 description="Provide System authentication via PolicyKit1 D-Bus service"
 
-#command=/usr/lib/polkit-1/polkitd
-command=/usr/lib/polkit-elogind/polkitd
+command=/usr/lib/polkit-1/polkitd
 command_args="${POLKIT_OPTS:---no-debug}"
 
 depend() {
