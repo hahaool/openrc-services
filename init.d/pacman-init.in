@@ -1,0 +1,30 @@
+#!/usr/bin/openrc-run
+
+
+Description="Initializes Pacman keyring"
+
+
+depends()
+{
+	need clock
+	after display-manager xdm
+}
+
+start_pre()
+{
+	ebegin "Checking Temporary /etc/pacman.d/gnupg directory"
+	checkpath -d -o root:root -m755 /etc/pacman.d/gnupg
+	eend
+}
+
+start()
+{
+	ebegin ${Description}
+
+	einfo 'Generating pacman keyring master key...'
+	pacman-key --init &> /dev/null
+	einfo 'Appending keys from archlinux.gpg...'
+	pacman-key --populate &> /dev/null
+
+	eend
+}
