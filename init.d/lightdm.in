@@ -5,7 +5,8 @@ description="Light Display Manager"
 supervisor=supervise-daemon
 command=/usr/bin/lightdm
 
-depends() {
+depends()
+{
 	provide xdm display-manager
 	needs localmount
 
@@ -16,4 +17,9 @@ depends() {
 
 start_pre() {
 	checkpath -d -o lightdm:lightdm -m755 /var/lib/lightdm
+}
+
+start() {
+	ebegin "$description"
+	eend
 }
