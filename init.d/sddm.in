@@ -1,14 +1,15 @@
 #!@RUNSCRIPT@
 
 supervisor=supervise-daemon
-name="Simple Desktop Display Manager"
+description="Simple Desktop Display Manager"
 
 command=/usr/bin/sddm
 
-depends() {
+depends()
+{
 	provide xdm display-manager
 	needs localmount
-	
+
         after bootmisc consolefont modules netmount
         after keymaps
         want logind
@@ -16,4 +17,9 @@ depends() {
 
 start_pre() {
 	checkpath -d -o sddm:sddm -m755 /var/lib/sddm
+}
+
+start() {
+	ebegin "$description"
+	eend
 }
