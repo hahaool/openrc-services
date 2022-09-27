@@ -18,6 +18,17 @@ restore() {
     
     checkpath -q -d -m 0700 -o root:root ${alsahomedir} || return 1
 
+    E_INFO="Updating current soundcards driver to configuration file"
+
+     if [ -e "${alsastatedir}/asound.state" ] ; then
+        rm "${alsastatedir}/asound.state"
+        einfo "${E_INFO}..."
+        alsactl store
+     else
+        einfo "${E_INFO}..."
+        alsactl store
+     fi
+
     if [ ! -r "${alsastatedir}/asound.state" ] ; then
         ewarn "No mixer config in ${alsastatedir}/asound.state, you have to unmute your card!"
         eend 0
