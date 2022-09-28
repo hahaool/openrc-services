@@ -17,9 +17,6 @@ depends()
 
 start_pre() {
 	checkpath -d -o lightdm:lightdm -m755 /var/lib/lightdm
-}
 
-start() {
 	ebegin "$description"
-	eend
 }
