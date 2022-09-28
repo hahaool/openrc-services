@@ -15,7 +15,8 @@ depends()
         want logind
 }
 
-start() {
+start_pre() {
+	checkpath -d -o lxdm:lxdm -m755 /var/lib/lxdm
+
 	ebegin "$description"
-	eend
 }
