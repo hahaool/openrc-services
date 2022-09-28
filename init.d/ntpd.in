@@ -15,5 +15,9 @@ start_pre() {
         eerror "See ntpd.conf(5)"
         return 1
     fi
+    
+    if [ ! -f /var/lib/ntp/ntp.leapseconds ]; then
+        update-leap
+    fi
     return 0
 }
