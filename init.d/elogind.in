@@ -6,6 +6,7 @@ depend() {
 	need dbus
 	use logger
 	provide logind
+	after networkmanager
 
 	# Make sure elogind is up before xdm starts any dm
 	before xdm
