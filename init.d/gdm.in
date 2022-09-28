@@ -17,9 +17,6 @@ depends()
 
 start_pre() {
 	checkpath -d -o gdm:gdm -m755 /var/lib/gdm
-}
 
-start() {
 	ebegin "$description"
-	eend
 }
