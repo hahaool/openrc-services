@@ -17,9 +17,6 @@ depends()
 
 start_pre() {
 	checkpath -d -o sddm:sddm -m755 /var/lib/sddm
-}
 
-start() {
 	ebegin "$description"
-	eend
 }
