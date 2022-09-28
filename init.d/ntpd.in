@@ -1,6 +1,6 @@
 #!@RUNSCRIPT@
 
-command=/usr/bin/ntpd
+command=/usr/sbin/ntpd
 pidfile=/run/ntpd.pid
 command_args="$NTPD_OPTS"
 
