@@ -3,12 +3,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 depend() {
-	 need dbus
-  
-   provide logind
+	need dbus
+	use logger
+	provide logind
 
-	 # Make sure elogind is up before xdm starts any dm
-	 before xdm
+	# Make sure elogind is up before xdm starts any dm
+	before xdm
 }
 
 start() {
