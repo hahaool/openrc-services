@@ -23,7 +23,7 @@ checkconfig() {
 }
 
 start_pre() {
-  if [[ -n $(grep -e '^leapfiles' /etc/ntp.conf) ]]; then
+  if [[ -n $(grep -e '^leapfile' /etc/ntp.conf) ]]; then
     update-leap
   fi
 }
