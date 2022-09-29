@@ -23,16 +23,16 @@ checkconfig() {
 }
 
 start_pre() {
-  if [[ -n $(grep -e '^leapfile' /etc/ntp.conf) ]]; then
-    update-leap
-  fi
-  return 0
+	if [[ -n $(grep -e '^leapfile' /etc/ntp.conf) ]]; then
+		update-leap
+	fi
+	return 0
 }
 
 start() {
-  checkconfig || return $?
+	checkconfig || return $?
 
-  ebegin "Setting clock via the NTP client '${NTPCLIENT_CMD}'"
-  "${NTPCLIENT_CMD}" ${NTPCLIENT_OPTS}
-eend $? "Failed to set clock"
+	ebegin "Setting clock via the NTP client '${NTPCLIENT_CMD}'"
+	"${NTPCLIENT_CMD}" ${NTPCLIENT_OPTS} &>> /var/log/ntp.log
+	eend $? "Failed to set clock"
 }
