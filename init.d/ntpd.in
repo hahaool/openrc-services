@@ -1,5 +1,7 @@
 #!@RUNSCRIPT@
 
+description="ntpd - the network time protocol daemon"
+
 command=/usr/sbin/ntpd
 pidfile=/run/ntpd.pid
 command_args="$NTPD_OPTS"
@@ -11,13 +13,10 @@ depend() {
 
 start_pre() {
     if [ ! -f /etc/ntp.conf ]; then
-        eerror "Missing /etc/ntp.conf"
+        eerror "Missing /etc/ntp.conf, Please create that"
         eerror "See ntpd.conf(5)"
         return 1
     fi
-    
-    if [ ! -f /var/lib/ntp/ntp.leapseconds ]; then
-        update-leap
-    fi
+
     return 0
 }
