@@ -26,6 +26,7 @@ start_pre() {
   if [[ -n $(grep -e '^leapfile' /etc/ntp.conf) ]]; then
     update-leap
   fi
+  return 0
 }
 
 start() {
