@@ -7,7 +7,7 @@ depend(){
 # 101.6.6.6  https://tuna.moe
 start() {
    ebegin "Configuring Systemd Dns"
-   for n in {119.29.29.29,9.9.9.9,223.5.5.5}; do
+   for n in {119.29.29.29,8.8.8.8,223.5.5.5}; do
        echo "nameserver ${n}" >>/run/systemd/resolve/stub-resolv.conf
     done
     
