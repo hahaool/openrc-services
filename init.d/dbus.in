@@ -18,15 +18,7 @@ depend() {
 
 start_pre() {
     [ -e /etc/machine-id ] || touch /etc/machine-id
-
-    if [ -x /usr/bin/file ]; then
-        [ "$(file /etc/machine-id | awk '{print $2}')" != 'empty' ] || /usr/bin/dbus-uuidgen >/etc/machine-id
-    elif [ -x /usr/bin/sha256sum ]; then
-        [ "$(sha256sum /etc/machine-id)" != 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' ] || /usr/bin/dbus-uuidgen >/etc/machine-id
-    else
-        [ -s /etc/machine-id ] || /usr/bin/dbus-uuidgen >/etc/machine-id
-    fi
-
+    [ -s /etc/machine-id ] || /usr/bin/dbus-uuidgen >/etc/machine-id
     /usr/bin/dbus-uuidgen --ensure=/etc/machine-id
 
     # We need to test if /run/dbus exists, since script will fail if it does not
