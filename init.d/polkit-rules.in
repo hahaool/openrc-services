@@ -9,7 +9,6 @@ start() {
   
   if [ -d /run/openrc ]; then
   # subject.user == "USER"
-  
     cat <<"EOF"> /run/openrc/rc-polkit.rules
 polkit.addRule(function(action, subject) {
     if (subject.isInGroup("users") &&
@@ -18,7 +17,6 @@ polkit.addRule(function(action, subject) {
     }
 });
 EOF
-
     checkpath -d -o polkitd:root -m 700 /etc/polkit-1/rules.d
     [ -L /etc/polkit-1/rules.d/60-openrc.rules ] || ln -sf /run/openrc/rc-polkit.rules /etc/polkit-1/rules.d/60-openrc.rules
 
