@@ -1,0 +1,32 @@
+#!@RUNSCRIPT@
+
+depend() {
+  need polkit
+}
+
+start() {
+  ebegin
+  
+  if [ -d /run/openrc ]; then
+  # subject.user == "USER"
+  
+    cat <<"EOF"> /run/openrc/rc-polkit.rules
+polkit.addRule(function(action, subject) {
+    if (subject.isInGroup("users") &&
+        subject.isInGroup("wheel")) {
+        return polkit.Result.YES;
+    }
+});
+EOF
+
+    checkpath -d -o polkitd:root -m 700 /etc/polkit-1/rules.d
+    [ -L /etc/polkit-1/rules.d/60-openrc.rules ] || ln -sf /run/openrc/rc-polkit.rules /etc/polkit-1/rules.d/60-openrc.rules
+
+fi
+  
+  eend 0
+}
+
+stop() {
+    [ -f /run/openrc/rc-polkit.rules ] && rm -f /run/openrc/rc-polkit.rules || return 0
+}
