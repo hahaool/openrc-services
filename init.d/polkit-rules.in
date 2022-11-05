@@ -6,7 +6,7 @@ depend() {
 
 start() {
   ebegin
-  
+
   if [ -d /run/openrc ]; then
   # subject.user == "USER"
     cat <<"EOF"> /run/openrc/rc-polkit.rules
@@ -21,8 +21,7 @@ EOF
     [ -L /etc/polkit-1/rules.d/60-openrc.rules ] || ln -sf /run/openrc/rc-polkit.rules /etc/polkit-1/rules.d/60-openrc.rules
 
 fi
-  
-  eend 0
+    eend 0
 }
 
 stop() {
