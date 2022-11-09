@@ -1,11 +1,11 @@
 #!@RUNSCRIPT@
 
 depend() {
-    after xdm display-manager
+    before xdm display-manager
 }
 
 start() {
-    ebegin
+    ebegin "Configuring polkit-rules"
 
     if [ -d /run/openrc ]; then
         # subject.user == "USER"
