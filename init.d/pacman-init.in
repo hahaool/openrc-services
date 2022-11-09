@@ -3,11 +3,10 @@
 description="Initializes Pacman keyring"
 
 command=/usr/bin/pacman-key
-command_args="--init &> /dev/null; ${command} --populate &> /dev/null"
+command_args="--init &>/dev/null; ${command} --populate &>/dev/null"
 
 
-depends()
-{
-        after display-manager xdm
-        after sddm gdm lightdm lxdm zswap
+depends() {
+	after display-manager xdm
+	after sddm gdm lightdm lxdm zswap
 }

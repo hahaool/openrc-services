@@ -5,19 +5,33 @@ depend(){
 }
 
 # 101.6.6.6  https://tuna.moe
-start() {
-   ebegin "Configuring Systemd Dns"
-   for n in {119.29.29.29,8.8.8.8,223.5.5.5}; do
-       echo "nameserver ${n}" >>/run/systemd/resolve/stub-resolv.conf
-    done
-    
-    eend 0
-  }
+DNS="
+114.114.114.114
+8.8.8.8
+119.29.29.29
+223.5.5.5
+8.8.4.4
+"
 
-start_pre() {
-   ebegin "Checking Systemd-resolve Directory"
-   checkpath -d /run/systemd/resolve
-   
-   eend 0
-   return 0
+start_pre()
+{
+    ebegin "Checking Systemd-resolve Directory"
+    checkpath -d /run/systemd/resolve
+    eend 0
+}
+
+start()
+{
+    ebegin "Configuring Systemd Dns"
+    for n in ${DNS}; do
+        echo "nameserver ${n}" >>/run/systemd/resolve/stub-resolv.conf
+    done
+    echo 'options edns0 trust-ad' >>/run/systemd/resolve/stub-resolv.conf
+    eend 0
+}
+
+stop()
+{
+    [ -f /run/systemd/resolve/stub-resolv.conf ] && rm -f /run/systemd/resolve/stub-resolv.conf
+    return 0
 }

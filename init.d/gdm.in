@@ -5,11 +5,11 @@ description="GNOME Display Manager"
 supervisor=supervise-daemon
 command=/usr/bin/gdm
 
-depends() 
+depends()
 {
 	provide xdm display-manager
 	needs localmount
-	
+
 	after bootmisc consolefont modules netmount
         after keymaps
         want logind

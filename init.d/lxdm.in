@@ -5,14 +5,14 @@ description="LXDE Display Manager"
 supervisor=supervise-daemon
 command=/usr/sbin/lxdm
 
-depends() 
+depends()
 {
 	provide xdm display-manager
 	needs localmount
 
-        after bootmisc consolefont modules netmount
-        after keymaps
-        want logind
+    after bootmisc consolefont modules netmount
+    after keymaps
+    want logind
 }
 
 start_pre() {

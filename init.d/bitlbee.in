@@ -6,5 +6,5 @@ command=bitlbee
 command_args="$BITLBEE_OPTS"
 
 depend() {
-   need logger net
+	need logger net
 }

@@ -15,7 +15,7 @@ depend() {
 
 restore() {
     ebegin "Restoring Mixer Levels"
-    
+
     checkpath -q -d -m 0700 -o root:root ${alsahomedir} || return 1
 
     E_INFO="Updating current soundcards driver to configuration file"
@@ -61,7 +61,7 @@ restore() {
 
 save() {
     ebegin "Storing ALSA Mixer Levels"
-    
+
     checkpath -q -d -m 0700 -o root:root ${alsahomedir} || return 1
 
     mkdir -p "${alsastatedir}"

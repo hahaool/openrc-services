@@ -19,7 +19,7 @@ depend() {
 start_pre() {
     [ -e /etc/machine-id ] || touch /etc/machine-id
     [ -s /etc/machine-id ] || /usr/bin/dbus-uuidgen >/etc/machine-id
-    
+
     /usr/bin/dbus-uuidgen --ensure=/etc/machine-id
 
     # We need to test if /run/dbus exists, since script will fail if it does not
