@@ -25,5 +25,7 @@ fi
 }
 
 stop() {
+    ebegin
     [ -f /run/openrc/rc-polkit.rules ] && rm -f /run/openrc/rc-polkit.rules || return 0
+    eend 0
 }
