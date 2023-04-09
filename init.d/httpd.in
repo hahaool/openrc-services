@@ -92,7 +92,7 @@ start() {
 
 	ebegin "Starting ${SVCNAME}"
 	# Use start stop daemon to apply system limits #347301
-	start-stop-daemon --start --pidfile "${PIDFILE}" -- \
+	start-stop-daemon --start --quiet --pidfile "${PIDFILE}" -- \
 		${HTTPD} ${HTTPD_OPTS} -k start
 
 	local i=0 retval=1
@@ -118,7 +118,7 @@ stop() {
 	fi
 
 	ebegin "Stopping ${SVCNAME}"
-	${HTTPD} ${HTTPD_OPTS} -k stop
+	${HTTPD} ${HTTPD_OPTS} -k stop 2>/dev/null
 
 	local i=0 retval=0
 	while ( test -f "${PIDFILE}" || pgrep -P ${PID} httpd >/dev/null ) \
