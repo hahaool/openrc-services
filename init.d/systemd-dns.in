@@ -4,19 +4,14 @@ depend(){
    after network net
 }
 
-# 101.6.6.6  https://tuna.moe
-DNS="
-114.114.114.114
-8.8.8.8
-119.29.29.29
-223.5.5.5
-8.8.4.4
-"
+# 180.76.76.76#baidu  52.80.66.66#oneDNS  1.2.4.8, 210.2.4.8#cnnic  101.198.199.200#360  119.29.29.29 223.5.5.5
+DNS="101.198.199.200 8.8.8.8"
+
 
 start_pre()
 {
     ebegin "Checking Systemd-resolve Directory"
-    checkpath -d /run/systemd/resolve
+    checkpath -qd /run/systemd/resolve
     eend 0
 }
 

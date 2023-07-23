@@ -16,7 +16,7 @@ depends()
 }
 
 start_pre() {
-	checkpath -d -o lightdm:lightdm -m755 /var/lib/lightdm
+	checkpath -qd -o lightdm:lightdm -m755 /var/lib/lightdm
 
 	ebegin "$description"
 }

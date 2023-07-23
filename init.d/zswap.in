@@ -8,7 +8,8 @@ depend() {
 }
 
 start_pre() {
-	modprobe zram &>/dev/null || return 0
+	modprobe zram &>/dev/null || true
+	#cat /sys/class/zram-control/hot_add >/dev/null 2>&1
 }
 
 start() {
@@ -19,7 +20,7 @@ start() {
     fi
 
       # Set defaults if not specified
-    : "${SIZE:=256}" "${PRIORITY:=100}"
+    : "${SIZE:=2048}" "${PRIORITY:=100}"
 
     SIZE=$((SIZE * 1024 * 1024))   # convert amount from MiB to bytes
 
@@ -33,13 +34,14 @@ start() {
     mkswap /dev/zram0 > /dev/null 2>&1
     swapon /dev/zram0 -p 32767
 
-    eend 0
+    eend $?
 }
 
 stop() {
     ebegin "Deactivating zram swap devices"
     swapoff /dev/zram0
-    eend 0
+
+    eend $?
 }
 
 stop_post() {

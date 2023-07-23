@@ -16,7 +16,7 @@ depends()
 }
 
 start_pre() {
-	checkpath -d -o sddm:sddm -m755 /var/lib/sddm
+	checkpath -qd -o sddm:sddm -m755 /var/lib/sddm
 
 	ebegin "$description"
 }

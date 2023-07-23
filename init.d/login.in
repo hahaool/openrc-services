@@ -1,17 +1,21 @@
 #!@RUNSCRIPT@
 
-description="Remove /run/nologin created by systemd tmpfiles.d"
+description="Delete the /run/nologin file created by systemd-tmpfiles"
 
 depend() {
-    after tmpfilesd.boot
-    before xdm display-manager
+	after tmpfiles.setup
+	before xdm display-manager
 }
 
 start() {
-    if [ -f /run/nologin ]; then
-        rm -f /run/nologin
-        return $?
-    else
-        return 0
-    fi
+	ebegin "$description"
+
+	if [ -f /run/nologin ]; then
+		rm -f /run/nologin
+		return $?
+	else
+		return 0
+	fi
+
+	eend $?
 }

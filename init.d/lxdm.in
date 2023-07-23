@@ -16,7 +16,7 @@ depends()
 }
 
 start_pre() {
-	checkpath -d -o lxdm:lxdm -m755 /var/lib/lxdm
+	checkpath -qd -o lxdm:lxdm -m755 /var/lib/lxdm
 
 	ebegin "$description"
 }
