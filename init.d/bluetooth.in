@@ -3,8 +3,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 supervisor=supervise-daemon
-command="/usr/bin/bluetoothd"
-#command="/usr/libexec/bluetooth/bluetoothd"
+
+if [ -x /usr/sbin/bluetoothd ]; then
+    command="/usr/sbin/bluetoothd"
+elif [ -x /usr/bin/bluetoothd ]; then
+    command="/usr/bin/bluetoothd"
+elif [ -x /usr/libexec/bluetooth/bluetoothd ]; then
+    command="/usr/libexec/bluetooth/bluetoothd"
+fi
 
 depend() {
 	after coldplug

@@ -1,0 +1,6 @@
+# /etc/conf.d/xdm: config file for /etc/init.d/*dm
+
+if [ -r /etc/locale.conf ]; then
+	. /etc/locale.conf
+	export LANG LC_TIME
+fi

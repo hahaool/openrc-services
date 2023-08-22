@@ -3,7 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 supervisor="supervise-daemon"
-command="/usr/lib/power-profiles-daemon"
+command="/usr/libexec/power-profiles-daemon"
 command_args="${PPDARGS}"
 command_args_foreground=""
 

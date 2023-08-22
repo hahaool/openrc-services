@@ -17,7 +17,7 @@ depend() {
 
 get_udevd_binary() {
 	local bins
-	bins="/sbin/udevd /lib/systemd/systemd-udevd /usr/lib/systemd/systemd-udevd"
+	bins="/bin/udevd /sbin/udevd /usr/lib/systemd/systemd-udevd"
 	for f in ${bins}; do
 		if [ -x "$f" ]; then
 			command="$f"

@@ -1,11 +1,17 @@
 #!@RUNSCRIPT@
 
-command=/usr/bin/NetworkManager
 description="manages network connections"
-
 extra_started_commands="wake sleep"
 description_wake=""
 description_sleep=""
+
+if [ -x /usr/sbin/NetworkManager ]; then
+    command=/usr/sbin/NetworkManager
+elif [ -x /usr/bin/NetworkManager ]; then
+    command="/usr/bin/NetworkManager"
+else
+    command="$(type -pa NetworkManager)"
+fi
 
 depend() {
     need dbus
